@@ -1,4 +1,4 @@
-package cyoa
+package main
 
 type Story map[string]Chapter
 

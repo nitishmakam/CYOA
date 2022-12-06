@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -12,16 +11,12 @@ func main() {
 	flag.Parse()
 
 	f, err := os.Open(*fileName)
-
 	if err != nil {
 		panic(err)
 	}
 
-	d := json.NewDecoder(f)
-
-	var story Story
-
-	if err := d.Decode(&story); err != nil {
+	story, err := JsonStory(f)
+	if err != nil {
 		panic(err)
 	}
 
